@@ -1,5 +1,4 @@
 #以下の2ファイルはgitの追跡対象としない
 .vscode/
 .DS_Store
-..
 */__pycache__
