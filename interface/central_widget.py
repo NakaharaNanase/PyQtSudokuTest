@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout
+from interface import main_window as mw
 from . import buttons_widget as bw
 from . import sudoku_interface as si
 
@@ -11,11 +12,14 @@ class CentralWidget(QWidget):
         super().__init__()
         self.width = width
         self.height = height
-        self.dimention = dimention
         self.sdk_window_size = min(self.width, self.height)
-        self.sdk_interface_widget = si.SdkInterface(self.sdk_window_size, self.dimention)
+        self.dimention = dimention
+
+        self.sdk_interface_widget = si.SdkEditIF(self.sdk_window_size, self.dimention)
         self.buttons_widget = bw.ButtonsWidget(self.width, self.height)
+
         self.initUI()
+        self.buttons_action()
     
     def initUI(self):
         if (self.width > self.height):
@@ -27,3 +31,8 @@ class CentralWidget(QWidget):
         self.layout.setContentsMargins(0,0,0,0)
 
         self.setLayout(self.layout)
+    
+    # ボタンを押した時の動作について定義する．
+    def buttons_action(self):
+        self.buttons_widget.reset_button.clicked.connect(self.sdk_interface_widget.clearNums)
+        self.buttons_widget.quit_button.clicked.connect(mw.SudokuApp.quit)
