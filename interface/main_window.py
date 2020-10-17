@@ -1,18 +1,14 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from . import central_widget as cw
-###
-# 解く数独の次元(サイズ)，デフォルトは9x9数独であるが，
-# 今後拡張できるように，現在は定数DIMENTION = 9としてある．
-###
-
-DIMENTION = 9
 
 class SudokuApp(QApplication):
     """
      Qtにおいて，メインウィンドウを表示させる前に必ず生成する必要がある
-     ウィジェットであるQApplicationをここで定義する
+     ウィジェットであるQApplicationをここで定義する．
+     DIMENTIONは，解く数独の次元(サイズ)，デフォルトは9x9数独なので，
+     DIMENTION=9としてあるが，今後16x16や25x25に拡張できるようにしてある．
     """
-    def __init__(self, argv, width, height):
+    def __init__(self, argv, width, height, DIMENTION = 9):
         super().__init__(argv)
         self.dimention = DIMENTION
         self.window = MainWindow(width, height, self.dimention)
