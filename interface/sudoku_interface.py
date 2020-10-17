@@ -59,12 +59,10 @@ class SdkEditIF(SdkInterface):
         for i in range(self.dim):
             for j in range(self.dim):
                 numform = self.nums_form[i][j]
-                # test!
-                numform.setText(f"{i*j}")
-                
                 numform.setLineWidth(1)
                 numform.setFrameStyle(QFrame.Box | QFrame.Plain)
                 numform.setAlignment(Qt.AlignCenter)
+                
                 self.layout.addWidget(numform, i, j)
         
         self.layout.setHorizontalSpacing(1)
@@ -78,3 +76,6 @@ class SdkEditIF(SdkInterface):
             for j in range(self.dim):
                 self.nums_form[i][j].clear()
                 self.nums_form[i][j].setAlignment(Qt.AlignCenter)
+    
+    def returnNumsArray(self):
+        return self.nums_form
