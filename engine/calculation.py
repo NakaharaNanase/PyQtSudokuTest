@@ -64,4 +64,4 @@ class CalcOptimalAns(object):
                 for k in self.__D:
                     if self.__x[i,j,k].value() == 1:
                         self.__Answer[self.__D.index(i)][self.__D.index(j)] = k
-        return (self.__Answer, self.__dim)
+        return self.__Answer
