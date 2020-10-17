@@ -77,3 +77,4 @@ class SdkEditIF(SdkInterface):
         for i in range(self.dim):
             for j in range(self.dim):
                 self.nums_form[i][j].clear()
+                self.nums_form[i][j].setAlignment(Qt.AlignCenter)
