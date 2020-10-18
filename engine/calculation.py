@@ -1,7 +1,14 @@
 import pulp
 import math
 
+
 class CalcOptimalAns(object):
+    """
+     数独を整数計画問題として定式化し解を求めます．
+     整数計画問題のモデリングを行うpulpという機能を使用しています．
+     pulpのデフォルトのソルバーはMILPのようですが，CPLEXがインストールされている場合は
+     CPLEXに切り替えることが可能です．
+    """
     def __init__(self, ProblemInfo):
         #問題の情報として，初期値行列，次元が与えられる．9x9ナンプレならdim = 9, 16x16ナンプレならdim = 16
         self.__Array, self.__dim = ProblemInfo
@@ -41,7 +48,6 @@ class CalcOptimalAns(object):
                 problem += sum(self.__x[k,j,i] for k in self.__D) <= 1
                 problem += sum(self.__x[k,j,i] for k in self.__D) >= 1
         #(4)
-        #あとで拡張する必要あり．
         root_dim = int(math.sqrt(self.__dim))
         U = [i for i in range(0, self.__dim, root_dim)]
         for u in U:
@@ -57,6 +63,7 @@ class CalcOptimalAns(object):
                     problem += self.__x[i,j,SudokuArray[i,j]] <= 1
 
         problem.solve()
+        #problem.solve(pulp.CPLEX())
     #答えの数独行列を生成し，その行列を返す．
     def AnswerInfo(self):
         for i in self.__D:
@@ -64,4 +71,4 @@ class CalcOptimalAns(object):
                 for k in self.__D:
                     if self.__x[i,j,k].value() == 1:
                         self.__Answer[self.__D.index(i)][self.__D.index(j)] = k
-        return (self.__Answer, self.__dim)
+        return self.__Answer

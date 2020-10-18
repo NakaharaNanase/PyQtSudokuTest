@@ -13,6 +13,8 @@ class ButtonsWidget(QWidget):
         self.initUI()
     
     def initUI(self):
+        # もし横幅のほうが大きければ，ボタン全体のウィジェットは水平配置になるので，
+        # ボタン同士の配置を垂直配置にする．
         if (self.width > self.height):
             self.layout = QVBoxLayout()
         else:
