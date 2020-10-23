@@ -1,5 +1,5 @@
 # PyQtSudokuTest
-整数計画問題を解くパッケージPulpを使って素早くナンプレ(数独)を解こう！
+整数計画問題を解くパッケージPulpを使って素早くナンプレ(数独)を解こう！(現在はfeatureブランチにあります．conda環境でのPython3.7.6で動作確認をしており，これらのコードを動かすためには数理最適化ソルバーであるpulpパッケージが必要です．pulpをインストールするには，conda環境の場合，conda install -c [ご自身の環境にあったチャンネル名] pulpとターミナルで叩いてください．)
 
 <br>
 <br>
@@ -11,7 +11,7 @@
 <br>
 ![SudokuApp](https://user-images.githubusercontent.com/58910397/96371934-59dc1580-119f-11eb-957e-556d80238d40.png)
 
-![SudokuApp_ans](https://user-images.githubusercontent.com/58910397/96372658-cc022980-11a2-11eb-8077-d806b9bcdc27.png)
+![SudokuApp_ans](https://user-images.githubusercontent.com/58910397/96959249-86df4e00-153a-11eb-8880-732ce3b5a24e.png)
 <br>
 <br>
 画像の例題は[こちら](https://numpre7.com/np601004)から解くことができます．このアプリが求解までに要した時間は0.07秒ほどでした．
