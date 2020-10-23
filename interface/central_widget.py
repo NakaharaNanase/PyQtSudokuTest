@@ -57,4 +57,4 @@ class CentralWidget(QWidget):
     # Resetボタンを押したときの動作，解を表示したウィンドウがあればそれも閉じる
     def reset_action(self):
         self.sdk_interface_widget.clearNums()
-        self.window.close()
+        #self.window.close()
