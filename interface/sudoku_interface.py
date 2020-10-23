@@ -2,7 +2,7 @@ import math
 
 from PyQt5.QtWidgets import (QWidget, QFrame, QLabel,
                              QGridLayout, QTextEdit)
-from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtGui import QPainter, QColor, QPen, QFont
 from PyQt5.QtCore import Qt
 
 
@@ -39,6 +39,9 @@ class SdkInterface(QWidget):
         self.setFixedSize(self.whsize, self.whsize)
         self.layout = QGridLayout()
         self.nums_form = [[QLabel() for i in range(self.dim)] for j in range(self.dim)]
+        font = QFont()
+        FONT_SIZE = 26
+        font.setPointSize(FONT_SIZE)
         for i in range(self.dim):
             for j in range(self.dim):
                 numform = self.nums_form[i][j]
@@ -50,6 +53,7 @@ class SdkInterface(QWidget):
                 numform.setFrameStyle(QFrame.Box | QFrame.Plain)
                 # 中央の数字を枠内の中央に配置
                 numform.setAlignment(Qt.AlignCenter)
+                numform.setFont(font)
                 self.layout.addWidget(numform, i, j)
         
         # 枠同士の水平方向・垂直方向の間隔
@@ -81,11 +85,15 @@ class SdkEditIF(SdkInterface):
         self.layout = QGridLayout()
         # 継承元のクラスから，変更した部分はQTextEditで，入力を受け付けられるようにする
         self.nums_form = [[QTextEdit() for i in range(self.dim)] for j in range(self.dim)]
+        font = QFont()
+        FONT_SIZE = 26
+        font.setPointSize(FONT_SIZE)
         for i in range(self.dim):
             for j in range(self.dim):
                 numform = self.nums_form[i][j]
                 numform.setLineWidth(1)
                 numform.setFrameStyle(QFrame.Box | QFrame.Plain)
+                numform.setFont(font)
                 numform.setAlignment(Qt.AlignCenter)
                 
                 self.layout.addWidget(numform, i, j)
